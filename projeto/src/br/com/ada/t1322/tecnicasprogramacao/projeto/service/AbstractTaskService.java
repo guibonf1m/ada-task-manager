@@ -12,7 +12,6 @@ import java.util.Optional;
 public abstract class AbstractTaskService implements TaskService {
 
     protected final TaskRepository taskRepository;
-
     protected final TaskValidator taskValidator;
     protected final Notifier notifier;
 

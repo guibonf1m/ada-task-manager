@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class TaskServiceImpl extends AbstractTaskService {
 
@@ -32,15 +33,19 @@ public class TaskServiceImpl extends AbstractTaskService {
 
     @Override
     public List<Task> findAll(Optional<Comparator<Task>> orderBy) {
-        // Você deve usar o repository que já está disponível via heranca.
-        // Por exemplo return taskRepository.findAll();
-        // Mas lembre que precisa aplicar o ordenador (orderBy) antes de retornar a lista
-        return null;
+        List<Task> tasks = taskRepository.findAll();
+        Comparator<Task> comparator = orderBy.orElse(DEFAULT_TASK_SORT);
+        List<Task> sortedTasks = tasks.stream().sorted(comparator).collect(Collectors.toList());
+        return sortedTasks;
     }
 
     @Override
     public List<Task> findByStatus(Task.Status status, Optional<Comparator<Task>> orderBy) {
-        return null;
+        List<Task> tasks = taskRepository.findAll();
+        tasks.removeIf(task -> !task.getStatus().equals(status));
+        Comparator<Task> comparator = orderBy.orElse(DEFAULT_TASK_SORT);
+        List<Task> sortedTasks = tasks.stream().sorted(comparator).collect(Collectors.toList());
+        return sortedTasks;
     }
 
     @Override
