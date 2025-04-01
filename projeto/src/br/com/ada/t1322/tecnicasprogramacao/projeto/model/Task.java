@@ -20,6 +20,9 @@ public class Task {
         this.status = status;
     }
 
+    public Task() {
+    }
+
     public enum Status {
         PENDENTE("Pendente"),
         EM_ANDAMENTO("Em andamento"),
