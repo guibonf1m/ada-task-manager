@@ -9,7 +9,10 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+@RestController
+@RequestMapping("/tasks")
 public class TaskControllerImpl extends AbstractTaskController {
+
 
     private static final int TAMANHO_MINIMO_TITULO = 3;
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -62,5 +65,4 @@ public class TaskControllerImpl extends AbstractTaskController {
             throw new IllegalArgumentException("Uma nova tarefa não pode ser criada com o status 'CONCLUÍDO'.");
         }
     }
-
 }
