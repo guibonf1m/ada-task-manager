@@ -2,10 +2,6 @@
 
 API RESTful desenvolvida com Java e Spring Boot para gerenciamento de tarefas (to-do list). Este projeto foi criado como parte do programa da Ada Tech com foco na construção de APIs seguindo as boas práticas de arquitetura REST, separação de camadas e uso de DTOs.
 
-![Java](https://img.shields.io/badge/Java-17-blue.svg)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen.svg)
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
-
 ---
 
 ## 🚀 Tecnologias utilizadas
