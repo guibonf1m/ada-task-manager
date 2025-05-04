@@ -1,82 +1,146 @@
-# Task Manager API
+# 📋 Ada Task Manager
 
-Projeto desenvolvido como prática de conceitos de Java com Spring Boot.  
-Trata-se de uma API REST para gerenciamento de tarefas, com funcionalidades como criação, listagem, atualização de status e exclusão de tarefas.
+API RESTful desenvolvida com Java e Spring Boot para gerenciamento de tarefas (to-do list). Este projeto foi criado como parte do programa da Ada Tech com foco na construção de APIs seguindo as boas práticas de arquitetura REST, separação de camadas e uso de DTOs.
 
----
-
-## 📌 Funcionalidades
-
-- ✅ Criar nova tarefa
-- 📄 Listar todas as tarefas
-- 🔄 Atualizar status da tarefa (Pendente, Em Andamento, Concluída)
-- ❌ Deletar uma tarefa
-- 🔍 Buscar tarefas por status
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## 🚀 Tecnologias utilizadas
 
-- Java 17+
-- Spring Boot
+- Java 17
+- Spring Boot 3
 - Spring Web
+- Spring Data JPA
+- H2 Database (banco em memória)
 - Maven
-- Postman (para testes)
+- Postman (testes manuais)
 
 ---
 
-## 📁 Estrutura do projeto
+## 📌 Funcionalidades da API
+
+- ✅ Criar uma tarefa (`POST /tasks`)
+- ✅ Listar todas as tarefas (`GET /tasks`)
+- ✅ Atualizar uma tarefa (`PUT /tasks/{id}`)
+- ✅ Deletar uma tarefa (`DELETE /tasks/{id}`)
+
+---
+
+## 🛠️ Como executar o projeto
+
+### Pré-requisitos
+
+- Java 17 ou superior
+- Maven instalado
+
+### Instruções
+
+```bash
+# Clone o repositório
+git clone https://github.com/guibonf1m/ada-task-manager.git
+
+# Acesse a pasta do projeto
+cd ada-task-manager
+
+# Execute o projeto
+./mvnw spring-boot:run
+```
+
+A aplicação estará rodando em:  
+📎 `http://localhost:8080/tasks`
+
+---
+
+## 📫 Exemplos de uso (via Postman ou qualquer cliente HTTP)
+
+### ▶ Criar uma tarefa (POST)
 
 ```
-projeto/
-├── controller/
-│   └── TaskControllerImpl.java
-├── domain/
-│   └── Task.java
-├── repository/
-│   └── TaskRepository.java
-├── service/
-│   └── TaskServiceImpl.java
-└── TaskApiApplication.java
+POST /tasks
+Content-Type: application/json
+```
+
+```json
+{
+  "title": "Estudar Java",
+  "description": "Aprender sobre Spring Boot",
+  "deadline": "10/05/2025",
+  "status": "PENDING"
+}
 ```
 
 ---
 
-## 🚀 Como executar
+### ▶ Listar todas as tarefas (GET)
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/guibonf1m/Task_Manager_Project.git
-   ```
+```
+GET /tasks
+```
 
-2. Navegue até o projeto:
-   ```bash
-   cd Task_Manager_Project/projeto
-   ```
+**Resposta esperada:**
 
-3. Execute a aplicação (pode usar o botão de run da sua IDE ou o comando abaixo):
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-
-4. Acesse a API no navegador ou via Postman:
-   ```
-   http://localhost:8080/api/tasks
-   ```
+```json
+[
+  {
+    "id": 1,
+    "title": "Estudar Java",
+    "description": "Aprender sobre Spring Boot",
+    "deadline": "10/05/2025",
+    "status": "PENDING"
+  }
+]
+```
 
 ---
 
-## 🔄 Futuras melhorias
+### ▶ Atualizar uma tarefa (PUT)
 
-- Integração com banco de dados
-- Paginação e ordenação na listagem
-- Validações com Bean Validation
-- Testes com JUnit
+```
+PUT /tasks/1
+Content-Type: application/json
+```
+
+```json
+{
+  "title": "Estudar Spring Boot",
+  "description": "Atualizando dados da tarefa",
+  "deadline": "15/05/2025",
+  "status": "IN_PROGRESS"
+}
+```
 
 ---
 
-## 👨‍💻 Desenvolvedor
+### ▶ Deletar uma tarefa (DELETE)
 
-**Guilherme Bonfim**  
-[LinkedIn](https://www.linkedin.com/in/guibonf1m)  
-[GitHub](https://github.com/guibonf1m)
+```
+DELETE /tasks/1
+```
+
+**Resposta esperada:**  
+`204 No Content` (sem corpo de resposta)
+
+---
+
+## ✨ Melhorias futuras
+
+- 🔍 Buscar tarefa por ID (`GET /tasks/{id}`)
+- ✅ Validações de campos com `@Valid` (ex: `@NotBlank`, `@NotNull`)
+- 📄 Documentação com Swagger/OpenAPI
+- 🧪 Testes unitários e de integração com JUnit
+- ☁️ Deploy na nuvem (Railway, Render, etc.)
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por [Guilherme Bonfim](https://github.com/guibonf1m)
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
